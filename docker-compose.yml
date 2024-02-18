@@ -10,6 +10,11 @@ services:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=secret
       - POSTGRES_DB=keycloak
+    healthcheck:
+      test: ["CMD-SHELL", "sh -c 'pg_isready -U root -d keycloak'"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
 
   keycloak:
     build:
@@ -38,6 +43,19 @@ services:
       - --https-certificate-file=/opt/keycloak/certificate.pem
       - --https-certificate-key-file=/opt/keycloak/privatekey.pem
       - --health-enabled=true
+    depends_on:
+      db:
+        condition: service_healthy
+
+  keycloak-health:
+    image: busybox:stable-musl
+    command: ["sh", "-c", "while true; do sleep 1; done"]
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "http://keycloak:8080/health/ready"]
+      interval: 15s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
 
   mailhog:
     image: mailhog/mailhog
@@ -55,6 +73,9 @@ services:
       - ./docker-test-config/mx-data:/data
       - ./docker-test-config/mx-conf:/mx-conf/
       - ./docker-test-config/kc-conf/certificate.pem:/mx-conf/cert/certificate.pem:ro
+    depends_on:
+      keycloak-health:
+        condition: service_healthy
     environment:
       - SYNAPSE_CONFIG_PATH=/mx-conf/homeserver.yaml
       - SSL_CERT_FILE=/mx-conf/cert/certificate.pem
