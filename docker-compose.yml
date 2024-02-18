@@ -1,0 +1,71 @@
+version: "3.9"
+services:
+  db:
+    image: postgres:15-alpine
+    volumes:
+      - keycloak-db:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=secret
+      - POSTGRES_DB=keycloak
+
+  keycloak:
+    build:
+      context: .
+    pull_policy: build
+    ports:
+      - "8080:8080"
+      - "8443:8443"
+    environment:
+      - KC_HOSTNAME=idp.local
+      - KC_VENDOR=postgres
+      - KC_DB=postgres
+      - KC_DB_URL_HOST=db
+      - KC_DB_USERNAME=root
+      - KC_DB_SCHEMA=public
+      - KC_DB_URL_DATABASE=keycloak
+      - KC_DB_PASSWORD=secret
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+      - KEYCLOAK_LOGLEVEL=INFO
+    volumes:
+      - ./docker-test-config/kc-conf/certificate.pem:/opt/keycloak/certificate.pem:ro
+      - ./docker-test-config/kc-conf/privatekey.pem:/opt/keycloak/privatekey.pem:ro
+    command:
+      - start-dev
+      - --https-certificate-file=/opt/keycloak/certificate.pem
+      - --https-certificate-key-file=/opt/keycloak/privatekey.pem
+      - --health-enabled=true
+
+  mailhog:
+    image: mailhog/mailhog
+    logging:
+      driver: "none" # disable saving logs
+    ports:
+      - 1025:1025 # smtp server
+      - 8025:8025 # web ui
+
+  synapse:
+    image: matrixdotorg/synapse:v1.98.0
+    ports:
+      - "8008:8008"
+    volumes:
+      - ./docker-test-config/mx-data:/data
+      - ./docker-test-config/mx-conf:/mx-conf/
+      - ./docker-test-config/kc-conf/certificate.pem:/mx-conf/cert/certificate.pem:ro
+    environment:
+      - SYNAPSE_CONFIG_PATH=/mx-conf/homeserver.yaml
+      - SSL_CERT_FILE=/mx-conf/cert/certificate.pem
+
+  element:
+    container_name: element-local
+    image: vectorim/element-web:v1.11.31
+    ports:
+      - "1983:80"
+    volumes:
+      - ./docker-test-config/element-config.json:/app/config.json
+
+volumes:
+  keycloak-db:
