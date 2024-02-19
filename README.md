@@ -13,10 +13,10 @@
 
 ## CI
 
-- [ ] lint
-- [ ] build SPI
+- [x] lint
+- [x] build SPI
 - [ ] version management
-- [ ] build and push KC image
+- [x] build and push KC image
 
 ## TODO
 
