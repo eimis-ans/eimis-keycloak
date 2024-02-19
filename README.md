@@ -13,26 +13,27 @@
 
 ## CI
 
-- lint
-- build SPI
-- version management
-- build KC image
-- push
+- [ ] lint
+- [ ] build SPI
+- [ ] version management
+- [ ] build and push KC image
 
 ## TODO
 
-- [ ] Dockerfile
-  - build
-  - health checks and watch
-  - kc
-  - mailhog
-  - pg
-  - synapse
-  - element
+- [x] Dockerfile
 - [ ] Docker compose
+  - [x] build
+  - [x] health checks and watch
+  - [x] kc
+  - [x] mailhog
+  - [x] pg
+  - [x] synapse
+  - [x] element
+  - [ ] use `watch`
 - [ ] Fork project
   - [ ] clean up
   - [ ] Check license
-  - [ ] readme
+  - [ ] readme : how to test email 2fa, fixes, badges
   - [ ] kotlin
   - [ ] tests
+- [ ] import/version test realm
