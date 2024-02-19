@@ -36,17 +36,17 @@ use_insecure_ssl_client_just_for_testing_do_not_use: true
 trusted_key_servers:
   - server_name: "matrix.org"
 oidc_providers:
-- idp_id: keycloak
-  idp_name: "EIMIS Connect"
-  skip_verification: true
-  issuer: "https://keycloak:8443/realms/eimis-realm"
-  client_id: "eimis-synapse"
-  client_secret: "PTE9SfKnTXy3f8vnhNc78MGxasnJThiK"
-  scopes: ["openid", "profile"]
-  user_mapping_provider:
-    config:
-      localpart_template: "{% raw %}{{ user.preferred_username }}{% endraw %}"
-      display_name_template: "{% raw %}{{ user.name }}{% endraw %}"
-  backchannel_logout_enabled: true # Optional
+  - idp_id: keycloak
+    idp_name: "EIMIS Connect"
+    skip_verification: true
+    issuer: "https://keycloak:8443/realms/eimis-realm"
+    client_id: "eimis-synapse"
+    client_secret: "PTE9SfKnTXy3f8vnhNc78MGxasnJThiK"
+    scopes: ["openid", "profile"]
+    user_mapping_provider:
+      config:
+        localpart_template: "{% raw %}{{ user.preferred_username }}{% endraw %}"
+        display_name_template: "{% raw %}{{ user.name }}{% endraw %}"
+    backchannel_logout_enabled: true # Optional
 
 # vim:ft=yaml

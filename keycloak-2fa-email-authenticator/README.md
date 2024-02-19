@@ -12,7 +12,7 @@ The [Server Development part of the Keycloak reference documentation](https://ww
 ## Development
 
 If you are using Eclipse, you need to install the Lombok plugin, otherwise Eclipse cannot resolve `log` which is declared at runtim through @JBossLog annotation.
-Find further information at https://projectlombok.org/setup/eclipse
+Find further information at <https://projectlombok.org/setup/eclipse>
 
 ## 🚀 Deployment
 
@@ -46,6 +46,7 @@ Don't forget to start kc.sh with build parameter to make KeyCloak recognize the 
 ## Email Configuration
 
 Don't forget to configure your realm's SMTP settings, otherwise no email will be send:
+
 1. Login as admin on your KeyCloak installation.
 2. Switch to your realm
 3. Click `Realm settings` from the menu on the left.
@@ -55,4 +56,4 @@ Don't forget to configure your realm's SMTP settings, otherwise no email will be
 
 Create new browser login authentication flow and add Email OTP flow before Username Password Form.
 
-<img src="static/otp-form.png">
+![otp image](static/otp-form.png)
