@@ -1,0 +1,49 @@
+name: Lint
+
+on:
+  pull_request:
+    branches: [main]
+
+  workflow_dispatch:
+
+jobs:
+  lint-markdown:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Lint markdown files
+        uses: avto-dev/markdown-lint@v1.5.0
+        with:
+          args: "**/*.md"
+
+  lint-yaml:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Lint yaml files
+        uses: ibiqlik/action-yamllint@v3.1.1
+
+  lint-dockerfile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Changed files
+        id: changed-dockerfiles
+        uses: tj-actions/changed-files@v42.0.2
+        with:
+          separator: " "
+          files: Dockerfile
+
+      - name: Lint dockerfile (hadolint)
+        if: steps.changed-dockerfiles.outputs.any_changed == 'true'
+        uses: hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: Dockerfile
+          recursive: true
+          verbose: true
