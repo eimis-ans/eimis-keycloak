@@ -7,7 +7,8 @@
 
 This repo is meant to build and publish a customized version of [Keycloak](https://www.keycloak.org/). An ID provider used to connect to a [Matrix](https://matrix.org/) network through [Synapse](https://github.com/element-hq/synapse) server and [Element](https://element.io/) app.
 
-The docker image is published to [Docker Hub](https://hub.docker.com/r/eimisans/eimis-keycloak).
+The docker image is published to [Docker Hub](https://hub.docker.com/r/eimisans/eimis-keycloak). The version will be :
+`v[KC_VERSION]-[EIMIS_INCREMENTAL_NUMBER]`
 
 Included SPIs projects are present in sub directories:
 
@@ -41,16 +42,19 @@ You can then access:
   - Paste it in the login screen
 - Synapse at [http://localhost:8008](http://localhost:8008)
 
+So far Keycloak version is set in the Dockerfile and in SPIs dependencies and they should match.
+
 ## TODO
 
-- [ ] readme : how to test email 2fa, fixes, badges
+- [x] readme : how to test email 2fa, fixes, badges
 - [x] Dockerfile
+- [ ] first release
 
 ### CI
 
 - [x] lint
 - [x] build SPI
-- [ ] version management
+- [x] version management
 - [x] build and push KC image
 
 ### Testing
@@ -67,7 +71,7 @@ You can then access:
   - [x] import/version test realm
   - [ ] Synapse db in PG
 
-## SPI Dev
+### SPI Dev
 
 - [x] Fork project
 - [ ] update dependencies & fix warnings
