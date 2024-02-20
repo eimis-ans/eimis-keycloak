@@ -297,7 +297,7 @@
       "enabled": true,
       "alwaysDisplayInConsole": false,
       "clientAuthenticatorType": "client-secret",
-      "secret": "**********",
+      "secret": "I_eat_kiwis_with_the_skin_on",
       "redirectUris": [
         "/*"
       ],
@@ -1896,7 +1896,7 @@
     "cibaInterval": "5",
     "realmReusableOtpCode": "false"
   },
-  "keycloakVersion": "22.0.1",
+  "keycloakVersion": "23.0.3",
   "userManagedAccessAllowed": false,
   "clientProfiles": {
     "profiles": []
