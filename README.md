@@ -1,8 +1,8 @@
 # EIMIS Keycloak
 
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/eimis-ans/eimis-keycloak/lint.yml?label=lint&logo=github&branch=main)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/eimis-ans/eimis-keycloak/lint.yml?label=lint&logo=github)
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/eimis-ans/eimis-keycloak/publish.yml?label=publish&logo=github&branch=main)
-![GitHub License](https://img.shields.io/github/license/eimis-ans/eimis-keycloak)
+![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)
 ![Gitmoji](https://img.shields.io/badge/gitmoji-%20%F0%9F%98%9C%20%F0%9F%98%8D-FFDD67.svg)
 
 This repo is meant to build and publish a customized version of [Keycloak](https://www.keycloak.org/). An ID provider used to connect to a [Matrix](https://matrix.org/) network through [Synapse](https://github.com/element-hq/synapse) server and [Element](https://element.io/) app.
@@ -46,37 +46,11 @@ So far Keycloak version is set in the Dockerfile and in SPIs dependencies and th
 
 ## TODO
 
-- [x] readme : how to test email 2fa, fixes, badges
-- [x] Dockerfile
-- [ ] first release
-
-### CI
-
-- [x] lint
-- [x] build SPI
-- [x] version management
-- [x] build and push KC image
-
-### Testing
-
-- [ ] Docker compose
-  - [x] build
-  - [x] health checks and watch
-  - [x] kc
-  - [x] mailhog
-  - [x] pg
-  - [x] synapse
-  - [x] element
-  - [x] use `watch`
-  - [x] import/version test realm
-  - [ ] Synapse db in PG
+- [ ] Synapse db in PG
 
 ### SPI Dev
 
-- [x] Fork project
-- [ ] update dependencies & fix warnings
 - [ ] Readme
 - [ ] clean up
-- [x] Check license
 - [ ] kotlin
 - [ ] tests
