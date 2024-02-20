@@ -1,4 +1,4 @@
-ARG KEYCLOAK_VERSION=22.0.1
+ARG KEYCLOAK_VERSION=23.0.3
 
 FROM maven:3.9.4-eclipse-temurin-17 AS java
 COPY ./keycloak-2fa-email-authenticator /build
