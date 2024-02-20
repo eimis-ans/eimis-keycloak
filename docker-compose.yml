@@ -48,6 +48,10 @@ services:
     depends_on:
       db:
         condition: service_healthy
+    develop:
+      watch:
+        - action: rebuild
+          path: ./keycloak-2fa-email-authenticator
 
   keycloak-health:
     image: busybox:stable-musl
