@@ -11,7 +11,7 @@ The docker image is published to [Docker Hub](https://hub.docker.com/r/eimisans/
 
 Included SPIs projects are present in sub directories:
 
-- keycloak-2fa-email-authenticator wich is a fork of [mesutpiskin/keycloak-2fa-email-authenticator](https://github.com/mesutpiskin/keycloak-2fa-email-authenticator)
+- keycloak-2fa-email-authenticator which is a fork of [mesutpiskin/keycloak-2fa-email-authenticator](https://github.com/mesutpiskin/keycloak-2fa-email-authenticator)
 
 ## Try it out locally
 
@@ -23,8 +23,11 @@ add the following to your `/etc/hosts` file:
 ```
 
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
+
+> [!TIP]
+> If started with `docker compose watch`, keycloak image will be rebuilt restarted everytime a change is detected in SPIs folders
 
 You can then access:
 
@@ -41,6 +44,7 @@ You can then access:
 ## TODO
 
 - [ ] readme : how to test email 2fa, fixes, badges
+- [x] Dockerfile
 
 ### CI
 
@@ -51,7 +55,6 @@ You can then access:
 
 ### Testing
 
-- [x] Dockerfile
 - [ ] Docker compose
   - [x] build
   - [x] health checks and watch
@@ -60,8 +63,9 @@ You can then access:
   - [x] pg
   - [x] synapse
   - [x] element
-  - [ ] use `watch`
-- [ ] import/version test realm
+  - [x] use `watch`
+  - [x] import/version test realm
+  - [ ] Synapse db in PG
 
 ## SPI Dev
 
