@@ -41,7 +41,7 @@ oidc_providers:
     skip_verification: true
     issuer: "https://keycloak:8443/realms/eimis-realm"
     client_id: "eimis-synapse"
-    client_secret: "PTE9SfKnTXy3f8vnhNc78MGxasnJThiK"
+    client_secret: "I_eat_kiwis_with_the_skin_on"
     scopes: ["openid", "profile"]
     user_mapping_provider:
       config:
