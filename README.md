@@ -46,9 +46,5 @@ So far Keycloak version is set in the Dockerfile and in SPIs dependencies and th
 
 ## TODO
 
-- [ ] Synapse db in PG
-
-### SPI Dev
-
 - [ ] kotlin
 - [ ] tests

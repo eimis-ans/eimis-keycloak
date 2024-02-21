@@ -22,9 +22,16 @@ listeners:
       - names: [client, federation]
         compress: false
 database:
-  name: sqlite3
+  name: psycopg2
+  txn_limit: 10000
   args:
-    database: /data/homeserver.db
+    user: root
+    password: secret
+    dbname: synapse
+    host: db
+    port: 5432
+    cp_min: 5
+    cp_max: 10
 log_config: "/data/matrix.local.log.config"
 media_store_path: /data/media_store
 registration_shared_secret: "rfFDSWR&.4C26b27gtCQuTp,*aSRf5sB.RMwL9G*39Kzf3r#T3"
@@ -41,7 +48,7 @@ oidc_providers:
     skip_verification: true
     issuer: "https://keycloak:8443/realms/eimis-realm"
     client_id: "eimis-synapse"
-    client_secret: "PTE9SfKnTXy3f8vnhNc78MGxasnJThiK"
+    client_secret: "I_eat_kiwis_with_the_skin_on"
     scopes: ["openid", "profile"]
     user_mapping_provider:
       config:

@@ -4,12 +4,13 @@ services:
     image: postgres:15-alpine
     volumes:
       - keycloak-db:/var/lib/postgresql/data
+      - ./docker-test-config/db-init:/docker-entrypoint-initdb.d
     ports:
       - "5432:5432"
     environment:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=secret
-      - POSTGRES_DB=keycloak
+      - POSTGRES_MULTIPLE_DATABASES=synapse,keycloak
     healthcheck:
       test: ["CMD-SHELL", "sh -c 'pg_isready -U root -d keycloak'"]
       interval: 10s
@@ -81,6 +82,8 @@ services:
       - ./docker-test-config/kc-conf/certificate.pem:/mx-conf/cert/certificate.pem:ro
     depends_on:
       keycloak-health:
+        condition: service_healthy
+      db:
         condition: service_healthy
     environment:
       - SYNAPSE_CONFIG_PATH=/mx-conf/homeserver.yaml
