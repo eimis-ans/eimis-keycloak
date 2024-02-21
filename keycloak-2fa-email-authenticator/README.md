@@ -2,7 +2,7 @@
 
 Originally forked from [mesutpiskin/keycloak-2fa-email-authenticator](https://github.com/mesutpiskin/keycloak-2fa-email-authenticator). Thanks ❤
 
-Keycloak Authentication Provider implementation to get a two factor authentication with an OTP (One-time-password) send via Email (through SMTP).
+Keycloak Authentication Provider implementation to get a two factors authentication with an OTP (One-time-password) send via Email (through SMTP).
 
 This is a [keycloak SPI](https://www.keycloak.org/docs/latest/server_development/index.html).
 
@@ -13,10 +13,10 @@ If you are using a different Keycloak version, don't forget to change the versio
 
 ## Provider
 
-`mvn package` will create a jar file. Or in a contained way:
+`gradle build` will create a jar file. Or in a contained way:
 
 ```bash
-docker run -it --rm --name maven-kc-2fa-email-build -v "$(pwd)":/usr/src/build -w /usr/src/build maven:3.9.4-eclipse-temurin-17 mvn clean package
+docker run -it --rm --name gradle-kc-2fa-email-build -v "$(pwd)":/usr/src/build -w /usr/src/build gradle:8.6.0-jdk11-alpine gradle build
 ```
 
 `keycloak-2fa-email-authenticator.jar` needs to go to `/opt/keycloak/providers/` directory. Then rebuild keycloak with `./kc.sh build`
@@ -31,7 +31,7 @@ docker run -it --rm --name maven-kc-2fa-email-build -v "$(pwd)":/usr/src/build -
 
 ## Keycloak configuration
 
-- Don't forget to configure your realm's SMTP settings, otherwise no email will be send:
+- Don't forget to configure your realm's SMTP settings, otherwise no email will be sent:
 - Create new browser login authentication flow (copy the default one)
 - add Email OTP flow before Username Password Form.
 - back to authentication, bind the new workflow to browser flow.

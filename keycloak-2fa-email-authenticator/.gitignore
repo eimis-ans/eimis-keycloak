@@ -25,5 +25,8 @@ hs_err_pid*
 target/*
 .idea
 .vscode
+.gradle/
+build/
+bin/
 
 *.iml

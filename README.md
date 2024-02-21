@@ -47,4 +47,5 @@ So far Keycloak version is set in the Dockerfile and in SPIs dependencies and th
 ## TODO
 
 - [ ] kotlin
+- [ ] gradle: improve build time
 - [ ] tests
