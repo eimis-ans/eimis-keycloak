@@ -1,31 +1,25 @@
 # 🔒 Keycloak 2FA Email Authenticator
 
-Originally forked from [mesutpiskin/keycloak-2fa-email-authenticator](https://github.com/mesutpiskin/keycloak-2fa-email-authenticator) thanks ❤
+Originally forked from [mesutpiskin/keycloak-2fa-email-authenticator](https://github.com/mesutpiskin/keycloak-2fa-email-authenticator). Thanks ❤
 
 Keycloak Authentication Provider implementation to get a two factor authentication with an OTP (One-time-password) send via Email (through SMTP).
 
+This is a [keycloak SPI](https://www.keycloak.org/docs/latest/server_development/index.html).
+
+## Usage
+
 When logging in with this provider, you can send a verification code (OTP) to the user's e-mail address.
-Tested with Keycloak version 22.0.1. If you are using a different Keycloak version, don't forget to change the version in pom.xml file.
+If you are using a different Keycloak version, don't forget to change the version in pom.xml file.
 
-The [Server Development part of the Keycloak reference documentation](https://www.keycloak.org/docs/latest/server_development/index.html) contains additional resources and examples for developing custom Keycloak extensions.
+## Provider
 
-## Development
+`mvn package` will create a jar file. Or in a contained way:
 
-If you are using Eclipse, you need to install the Lombok plugin, otherwise Eclipse cannot resolve `log` which is declared at runtim through @JBossLog annotation.
-Find further information at <https://projectlombok.org/setup/eclipse>
+```bash
+docker run -it --rm --name maven-kc-2fa-email-build -v "$(pwd)":/usr/src/build -w /usr/src/build maven:3.9.4-eclipse-temurin-17 mvn clean package
+```
 
-## 🚀 Deployment
-
-## Artifact
-
-You can download the necessary artifacts for Keycloak 2FA Email Authenticator from the [release on GitHub.](https://github.com/mesutpiskin/keycloak-2fa-email-authenticator/releases/tag/v0.4) Please choose the appropriate version based on your Keycloak installation.
-
-### Providers
-
-`mvn package` will create a jar file.
-copy `keycloak-2fa-email-authenticator.jar` to `keycloak/providers/` directory.
-
-If you are Dockerized keycloak then copy to `/opt/keycloak/providers/` directory.
+`keycloak-2fa-email-authenticator.jar` needs to go to `/opt/keycloak/providers/` directory. Then rebuild keycloak with `./kc.sh build`
 
 ### Theme Resources
 
@@ -35,25 +29,9 @@ If you are Dockerized keycloak then copy to `/opt/keycloak/providers/` directory
 
 - append **messages/*.properties** to `themes/base/email/messages/messages_en.properties`
 
-### Build
+## Keycloak configuration
 
-Don't forget to start kc.sh with build parameter to make KeyCloak recognize the new provider:
-
-> bin/kc.sh build
-
-## Configuration
-
-## Email Configuration
-
-Don't forget to configure your realm's SMTP settings, otherwise no email will be send:
-
-1. Login as admin on your KeyCloak installation.
-2. Switch to your realm
-3. Click `Realm settings` from the menu on the left.
-4. Click on the `Email`-tab and enter your smpt data.
-
-### Authentication Flow
-
-Create new browser login authentication flow and add Email OTP flow before Username Password Form.
-
-![otp image](static/otp-form.png)
+- Don't forget to configure your realm's SMTP settings, otherwise no email will be send:
+- Create new browser login authentication flow (copy the default one)
+- add Email OTP flow before Username Password Form.
+- back to authentication, bind the new workflow to browser flow.

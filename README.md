@@ -50,7 +50,5 @@ So far Keycloak version is set in the Dockerfile and in SPIs dependencies and th
 
 ### SPI Dev
 
-- [ ] Readme
-- [ ] clean up
 - [ ] kotlin
 - [ ] tests
