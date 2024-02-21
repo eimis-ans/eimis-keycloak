@@ -41,12 +41,12 @@ oidc_providers:
     skip_verification: true
     issuer: "https://keycloak:8443/realms/eimis-realm"
     client_id: "eimis-synapse"
-    client_secret: "I_eat_kiwis_with_the_skin_on"
+    client_secret: "PTE9SfKnTXy3f8vnhNc78MGxasnJThiK"
     scopes: ["openid", "profile"]
     user_mapping_provider:
       config:
-        localpart_template: "{% raw %}{{ user.preferred_username }}{% endraw %}"
-        display_name_template: "{% raw %}{{ user.name }}{% endraw %}"
+        localpart_template: "{{ user.preferred_username }}"
+        display_name_template: "{{ user.name }}"
     backchannel_logout_enabled: true # Optional
 
 # vim:ft=yaml
