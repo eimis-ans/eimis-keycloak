@@ -44,7 +44,5 @@ You can then access:
 
 So far Keycloak version is set in the Dockerfile and in SPIs dependencies and they should match.
 
-## TODO
-
-- [ ] kotlin
-- [ ] tests
+> [!CAUTION]
+> The dev / test environment is pre-configured with secrets and certificats that should obviously not be used in production.
