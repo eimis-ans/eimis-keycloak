@@ -41,11 +41,11 @@ services:
       - ./docker-test-config/kc-conf/privatekey.pem:/opt/keycloak/privatekey.pem:ro
       - ./docker-test-config/eimis-realm.json:/opt/keycloak/data/import/eimis-realm.json:ro
     command:
-      - start-dev
+      - start
+      - --optimized
       - --import-realm
       - --https-certificate-file=/opt/keycloak/certificate.pem
       - --https-certificate-key-file=/opt/keycloak/privatekey.pem
-      - --health-enabled=true
     depends_on:
       db:
         condition: service_healthy
