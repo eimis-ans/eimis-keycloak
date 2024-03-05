@@ -7,9 +7,13 @@ RUN mvn package
 
 FROM quay.io/keycloak/keycloak:${KEYCLOAK_VERSION} as builder
 ENV KC_DB=postgres
+# Enable health and metrics support
+ENV KC_HEALTH_ENABLED=true
+ENV KC_METRICS_ENABLED=true
 
 WORKDIR /opt/keycloak
-COPY --from=java /build/target/keycloak-2fa-email-authenticator-1.0.0.0-SNAPSHOT.jar /opt/keycloak/providers/keycloak-2fa-email-authenticator.jar
+# Add the provider JAR file to the providers directory
+COPY --chown=keycloak:keycloak --from=java /build/target/keycloak-2fa-email-authenticator-1.0.0.0-SNAPSHOT.jar /opt/keycloak/providers/keycloak-2fa-email-authenticator.jar
 RUN /opt/keycloak/bin/kc.sh build
 
 FROM quay.io/keycloak/keycloak:${KEYCLOAK_VERSION}
