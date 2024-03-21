@@ -1,6 +1,7 @@
 {
   "id": "0d53040e-43e2-46c5-bc99-258dae6d3cda",
   "realm": "eimis-realm",
+  "displayName": "Eimis Connect",
   "notBefore": 0,
   "defaultSignatureAlgorithm": "RS256",
   "revokeRefreshToken": false,
@@ -1160,8 +1161,11 @@
       }
     ]
   },
-  "internationalizationEnabled": false,
-  "supportedLocales": [],
+  "internationalizationEnabled": true,
+  "supportedLocales": [
+    "en",
+    "fr"
+  ],
   "authenticationFlows": [
     {
       "id": "f7d53888-1e15-4a8a-ad53-49c59921b775",
