@@ -3,7 +3,7 @@ ARG KEYCLOAK_VERSION=23.0.3
 FROM maven:3.9.4-eclipse-temurin-17 AS java
 COPY ./keycloak-2fa-email-authenticator /build
 WORKDIR /build
-RUN mvn package
+RUN --mount=type=cache,target=/root/.m2 mvn package
 
 FROM quay.io/keycloak/keycloak:${KEYCLOAK_VERSION} as builder
 ENV KC_DB=postgres
