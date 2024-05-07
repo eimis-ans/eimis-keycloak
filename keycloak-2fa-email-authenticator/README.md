@@ -23,11 +23,8 @@ docker run -it --rm --name maven-kc-2fa-email-build -v "$(pwd)":/usr/src/build -
 
 ### Theme Resources
 
-- **html/code-email.ftl** is a html email template. Copy to `themes/base/email/html/`
-
-- copy **text/code-email.ftl**  to `themes/base/email/text/`
-
-- append **messages/*.properties** to `themes/base/email/messages/messages_en.properties`
+- OTP screen is configured in this SPI
+- ⚠️ Email however is configured in the eimis theme SPI
 
 ## Keycloak configuration
 

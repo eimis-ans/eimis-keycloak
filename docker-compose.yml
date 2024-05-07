@@ -51,7 +51,7 @@ services:
     develop:
       watch:
         - action: rebuild
-          path: ./keycloak-2fa-email-authenticator
+          path: ./
 
   keycloak-health:
     image: curlimages/curl:8.5.0
@@ -76,7 +76,7 @@ services:
       - 8025:8025 # web ui
 
   synapse:
-    image: matrixdotorg/synapse:v1.98.0
+    image: eimisans/synapse:latest
     ports:
       - "8008:8008"
     volumes:
