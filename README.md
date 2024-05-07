@@ -3,7 +3,7 @@
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/eimis-ans/eimis-keycloak/lint.yml?label=lint&logo=github)
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/eimis-ans/eimis-keycloak/publish.yml?label=publish&logo=github&branch=main)
 ![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)
-![Gitmoji](https://img.shields.io/badge/gitmoji-%20%F0%9F%98%9C%20%F0%9F%98%8D-FFDD67.svg)
+![Matrix](https://img.shields.io/badge/matrix-000000?logo=Matrix&logoColor=white)
 
 This repo is meant to build and publish a customized version of [Keycloak](https://www.keycloak.org/). An ID provider used to connect to a [Matrix](https://matrix.org/) network through [Synapse](https://github.com/element-hq/synapse) server and [Element](https://element.io/) app.
 
@@ -13,6 +13,7 @@ The docker image is published to [Docker Hub](https://hub.docker.com/r/eimisans/
 Included SPIs projects are present in sub directories:
 
 - keycloak-2fa-email-authenticator which is a fork of [mesutpiskin/keycloak-2fa-email-authenticator](https://github.com/mesutpiskin/keycloak-2fa-email-authenticator)
+- eimis-theme : a custom theme for emails including OTP mail template
 
 ## Try it out locally
 
