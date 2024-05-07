@@ -14,7 +14,7 @@
         <java.version>17</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <keycloak.version>24.0.2</keycloak.version>
+        <keycloak.version>24.0.3</keycloak.version>
     </properties>
 
     <dependencies>
